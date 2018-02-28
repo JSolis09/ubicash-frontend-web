@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { CommonModule } from './common/common.module';
 import { LoginModule } from './login/login.module';
 
 @NgModule({
@@ -11,6 +12,7 @@ import { LoginModule } from './login/login.module';
     ],
     imports: [
         BrowserModule,
+        CommonModule,
         LoginModule,
         RouterModule.forRoot([])
     ],
