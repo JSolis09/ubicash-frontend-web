@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Auth } from './login.model';
 
 import { LoginService } from './login.service';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
     selector: 'app-login',
@@ -14,12 +16,19 @@ export class LoginComponent implements OnInit {
     public loading: boolean;
     public success: boolean;
 
-    constructor(private loginService: LoginService) { }
+    constructor(private loginService: LoginService,
+                private router: Router) { }
+
+    public static path(): string[] {
+        return ['login'];
+    }
 
     ngOnInit() { }
 
-    public cleanMessage() {
+    private cleanMessage() {
         this.errorMessage = null;
+        this.loginService.setAccessToken(null);
+        this.loginService.setLogged(false);
     }
 
     public showSuccessMessage(): Promise<any> {
@@ -37,11 +46,13 @@ export class LoginComponent implements OnInit {
         this.cleanMessage();
         this.loginService.login(this.auth)
             .subscribe((response) => {
-                console.log(response);
+                this.loginService.setAccessToken(response);
+                this.loginService.setLogged(true);
                 this.loading = false;
                 this.showSuccessMessage()
                     .then(() => {
-                        // TODO: redirect to home o landing
+                        this.router
+                            .navigate(DashboardComponent.path());
                     });
             }, (error) => {
                 this.success = false;

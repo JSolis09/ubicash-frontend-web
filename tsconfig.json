@@ -11,6 +11,10 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "types" :[
+        "jquery",
+        "semantic-ui"
+    ],
     "lib": [
       "es2016",
       "dom"

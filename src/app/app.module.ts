@@ -4,7 +4,9 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CommonModule } from './common/common.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { LoginModule } from './login/login.module';
+import * as $ from 'jquery';
 
 @NgModule({
     declarations: [
@@ -13,6 +15,7 @@ import { LoginModule } from './login/login.module';
     imports: [
         BrowserModule,
         CommonModule,
+        DashboardModule,
         LoginModule,
         RouterModule.forRoot([])
     ],

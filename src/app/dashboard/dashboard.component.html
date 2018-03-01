@@ -1,0 +1,30 @@
+<!-- Sidebar Menu -->
+<div class="ui vertical inverted sidebar menu">
+    <a class="active item">Dashboard</a>
+    <a class="item">Bancos</a>
+    <a class="item">Agencias</a>
+    <a class="item">Reportes</a>
+    <a class="item">Logout</a>
+</div>
+
+<div class="pusher">
+    <div class="ui inverted vertical masthead center aligned segment">
+        <div class="ui container">
+            <div class="ui large secondary inverted pointing menu">
+                <a class="toc item">
+                    <i class="sidebar icon"></i>
+                </a>
+                <a class="active item">Dashboard</a>
+                <a class="item">Bancos</a>
+                <a class="item">Agencias</a>
+                <a class="item">Reportes</a>
+                <div class="right item">
+                    <a class="ui inverted button" (click)="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui container">
+        <router-outlet></router-outlet>
+    </div>
+</div>
