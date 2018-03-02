@@ -22,6 +22,11 @@ export class LoginService {
 
     public setAccessToken(accessToken: AccessToken): void {
         this.accessToken = Object.assign({}, accessToken);
+        this.http.setAccessToken(this.accessToken.id);
+    }
+
+    public getAccessToken( ): AccessToken {
+        return this.accessToken;
     }
 
     public login(auth: Auth): Observable<any> {
@@ -29,11 +34,6 @@ export class LoginService {
     }
 
     public logout(): Observable<any> {
-        const headers: Headers = new Headers();
-        headers.set('Authorization', this.accessToken.id);
-        const requestOptions: RequestOptions = new RequestOptions({
-            headers: headers
-        });
-        return this.http.post('/Users/logout', {}, requestOptions);
+        return this.http.post('/Users/logout', {});
     }
 }

@@ -108,15 +108,12 @@
     .ui.fixed.menu {
         display: none !important;
     }
-    .secondary.pointing.menu .item,
+    .secondary.pointing.menu .item:not(.right),
     .secondary.pointing.menu .menu {
         display: none;
     }
     .secondary.pointing.menu .toc.item {
         display: block;
-    }
-    .masthead.segment {
-        min-height: 350px;
     }
     .masthead h1.ui.header {
         font-size: 2em;
@@ -128,3 +125,10 @@
     }
 }
 
+#logout-modal {
+    .content {
+        p.text {
+            text-align: center;
+        }
+    }
+}
