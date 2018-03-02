@@ -4,7 +4,6 @@
     <a class="item">Bancos</a>
     <a class="item">Agencias</a>
     <a class="item">Reportes</a>
-    <a class="item">Logout</a>
 </div>
 
 <div class="pusher">
@@ -19,12 +18,23 @@
                 <a class="item">Agencias</a>
                 <a class="item">Reportes</a>
                 <div class="right item">
-                    <a class="ui inverted button" (click)="logout()">Logout</a>
+                    <a class="ui inverted button" (click)="showModal()">Logout</a>
                 </div>
             </div>
         </div>
     </div>
     <div class="ui container">
         <router-outlet></router-outlet>
+    </div>
+</div>
+
+<div id="logout-modal" class="ui mini modal">
+    <div class="header"></div>
+    <div class="content">
+        <p class="text">¿Desea salir de esta sesión?</p>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">No</div>
+        <div class="ui positive right labeled icon button">Si<i class="checkmark icon"></i></div>
     </div>
 </div>
