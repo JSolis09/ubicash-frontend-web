@@ -1,0 +1,76 @@
+<div class="ui grid bank-page">
+    <div class="row">
+        <div class="ui header">Bancos</div>
+    </div>
+    <div class="row">
+        <div class="table-wrapper">
+            <div *ngIf="loading" class="ui active inverted dimmer">
+                <div class="ui text loader"></div>
+            </div>
+            <table class="ui selectable green stackable table table-bank">
+                <thead>
+                    <tr>
+                        <th class="center aligned">N°</th>
+                        <th class="center aligned">Nombre</th>
+                        <th class="center aligned">Alias</th>
+                        <th class="center aligned">Código</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bank of banks; let i = index;" (click)="addOrEditBank(bank)">
+                        <td class="center aligned">{{ i + 1 }}</td>
+                        <td>{{ bank.name }}</td>
+                        <td>{{ bank.short_name }}</td>
+                        <td class="center aligned">{{ bank.code }}</td>
+                        <td class="center aligned">
+                            <button class="negative circular ui icon button" (click)="deleteBank($event, bank)">
+                                <i class="icon trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer-table">
+            <div class="ui right floated small primary labeled icon button" (click)="addOrEditBank()">
+                <i class="building outline icon"></i> Agregar Banco
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="bank-modal" class="ui modal">
+    <div class="header">{{ modalTitle }} Banco</div>
+    <div class="content">
+        <form class="ui form" *ngIf='!!bank'>
+            <div class="field">
+                <label>Nombre</label>
+                <input type="text" name="name" placeholder="Nombre del Banco" [(ngModel)]="bank.name">
+            </div>
+            <div class="field">
+                <label>Alias</label>
+                <input type="text" name="short_name" placeholder="Alias" [(ngModel)]="bank.short_name">
+            </div>
+            <div class="field">
+                <label>Código</label>
+                <input type="text" name="code" placeholder="Código" [(ngModel)]="bank.code">
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">Cancelar</div>
+        <div class="ui positive right labeled icon button">Guardar<i class="save outline icon"></i></div>
+    </div>
+</div>
+
+<div id="confirmation-modal" class="ui mini modal">
+    <div class="header">Eliminar Banco</div>
+    <div class="content">
+        <p class="text">¿Desea eliminar éste registro, se eliminarán todas sus agencias?</p>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">No</div>
+        <div class="ui positive right labeled icon button">Si<i class="checkmark icon"></i></div>
+    </div>
+</div>

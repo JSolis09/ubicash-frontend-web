@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Ng2Webstorage } from 'ngx-webstorage';
 
 import { AppComponent } from './app.component';
 import { CommonModule } from './common/common.module';
@@ -17,6 +18,11 @@ import * as $ from 'jquery';
         CommonModule,
         DashboardModule,
         LoginModule,
+        Ng2Webstorage.forRoot({
+            prefix: 'uc-storage',
+            separator: '.',
+            caseSensitive: true
+        }),
         RouterModule.forRoot([])
     ],
     providers: [],
