@@ -1,4 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { Http, BaseRequestOptions, Headers, ResponseOptions, Response } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
@@ -7,6 +8,9 @@ import { HttpService } from './http.service';
 describe('HttpService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
+            imports: [
+                RouterTestingModule
+            ],
             providers: [
                 MockBackend,
                 BaseRequestOptions,

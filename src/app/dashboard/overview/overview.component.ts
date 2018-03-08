@@ -17,7 +17,6 @@ export class OverviewComponent implements OnInit {
             .getLogs()
             .subscribe((response) => {
                 this.logs = response.splice(0);
-                console.log(this.logs);
             });
     }
 
