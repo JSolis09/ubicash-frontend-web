@@ -5,4 +5,14 @@ body {
     .pusher {
         height: 100%;
     }
+    @media only screen and (max-width: 768px) {
+        .ui {
+            &.button {
+                &.fluid-mobile {
+                    width: 100%;
+                    border-radius: .5em;
+                }
+            }
+        }
+    }
 }

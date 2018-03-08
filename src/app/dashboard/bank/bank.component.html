@@ -19,12 +19,12 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let bank of banks; let i = index;" (click)="addOrEditBank(bank)">
-                        <td class="center aligned">{{ i + 1 }}</td>
+                        <td>{{ i + 1 }}</td>
                         <td>{{ bank.name }}</td>
                         <td>{{ bank.short_name }}</td>
-                        <td class="center aligned">{{ bank.code }}</td>
+                        <td>{{ bank.code }}</td>
                         <td class="center aligned">
-                            <button class="negative circular ui icon button" (click)="deleteBank($event, bank)">
+                            <button class="negative circular ui icon button fluid-mobile" (click)="deleteBank($event, bank)">
                                 <i class="icon trash"></i>
                             </button>
                         </td>
