@@ -5,15 +5,17 @@ import { OverviewModule } from './overview/overview.module';
 
 import { DashboardGuard } from './dashboard.guard';
 import { DashboardRoutes } from './dashboard.route';
+import { BankModule } from './bank/bank.module';
 
 @NgModule({
     imports: [
         RouterModule.forChild([
             ...DashboardRoutes
         ]),
-        OverviewModule
+        OverviewModule,
+        BankModule
     ],
-    declarations: [DashboardComponent],
+    declarations: [ DashboardComponent ],
     providers: [ DashboardGuard ]
 })
 export class DashboardModule { }

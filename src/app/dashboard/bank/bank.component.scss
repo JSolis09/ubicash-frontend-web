@@ -1,0 +1,18 @@
+.bank-page {
+    .table-wrapper {
+        width: 100%;
+        overflow: auto;
+        max-height: 500px;
+        .table-bank {
+            tbody {
+                tr > td {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .footer-table {
+        margin: 1em 0;
+        width: 100%;
+    }
+}
