@@ -1,8 +1,10 @@
-.bank-page {
+.bank-detail-page {
     .table-wrapper {
         width: 100%;
         overflow: auto;
+        height: auto;
         max-height: 500px;
+
         @media only screen and (max-width: 768px) {
             overflow-y: hidden;
             max-height: 100%;

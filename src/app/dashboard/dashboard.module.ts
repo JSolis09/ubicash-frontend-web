@@ -6,6 +6,7 @@ import { OverviewModule } from './overview/overview.module';
 import { DashboardGuard } from './dashboard.guard';
 import { DashboardRoutes } from './dashboard.route';
 import { BankModule } from './bank/bank.module';
+import { BankDetailModule } from './bank-detail/bank-detail.module';
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import { BankModule } from './bank/bank.module';
             ...DashboardRoutes
         ]),
         OverviewModule,
-        BankModule
+        BankModule,
+        BankDetailModule
     ],
     declarations: [ DashboardComponent ],
     providers: [ DashboardGuard ]

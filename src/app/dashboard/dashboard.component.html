@@ -2,7 +2,7 @@
 <div class="ui vertical inverted sidebar menu">
     <a routerLink='/dashboard' class="item" [class.active]="currentUrl === '/dashboard' || currentUrl === '/dashboard/overview'">Dashboard</a>
     <a routerLink='/dashboard/bank' class="item" [class.active]="currentUrl === '/dashboard/bank'">Bancos</a>
-    <a class="item">Agencias</a>
+    <a routerLink='/dashboard/bank-detail' class="item" [class.active]="currentUrl === '/dashboard/bank-detail'">Agencias</a>
     <a class="item">Reportes</a>
 </div>
 
@@ -15,7 +15,7 @@
                 </a>
                 <a routerLink="/dashboard" class="item" [class.active]="currentUrl === '/dashboard' || currentUrl === '/dashboard/overview'">Dashboard</a>
                 <a routerLink="/dashboard/bank" class="item" [class.active]="currentUrl === '/dashboard/bank'">Bancos</a>
-                <a class="item">Agencias</a>
+                <a routerLink='/dashboard/bank-detail' class="item" [class.active]="currentUrl === '/dashboard/bank-detail'">Agencias</a>
                 <a class="item">Reportes</a>
                 <div class="right item">
                     <a class="ui inverted button" (click)="showModal()">Logout</a>

@@ -12,5 +12,5 @@ export class BankDetail {
     lng: number;
     detail: string;
     distance: number;
-    bank?: Bank;
+    bankId: string;
 }

@@ -1,0 +1,103 @@
+<div class="ui stackable grid bank-detail-page">
+    <div class="row">
+        <div class="ui header">Agencias</div>
+    </div>
+    <div class="row">
+        <div class="eight wide column no-padding-lr">
+            <div class="filter">
+                <form class="ui form" [class.loading]="loadingForm">
+                    <div class="field">
+                        <select name="bank" *ngIf="!banks || banks.length === 0">
+                            <option value="">--Seleccione Banco--</option>
+                        </select>
+                        <select name="bank" id="filter-dropdown" *ngIf="!!banks && banks.length > 0" class="ui fluid dropdown" [(ngModel)]="bank">
+                            <option value="">--Seleccione Banco--</option>
+                            <option *ngFor="let bank of banks; let i = index;" [value]="bank.id">{{ bank.name }}</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <input name="query" type="text" placeholder="Palabra de búsqueda" [(ngModel)]="query">
+                    </div>
+                    <button class="ui primary button" type="button" (click)="search()" [disabled]="!bank">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="showBankDetail">
+        <div class="table-wrapper">
+            <div *ngIf="loading" class="ui active inverted dimmer">
+                <div class="ui text loader"></div>
+            </div>
+            <table class="ui selectable green stackable table table-bank">
+                <thead>
+                    <tr>
+                        <th class="center aligned">N°</th>
+                        <th class="center aligned">Dirección</th>
+                        <th class="center aligned">Detalle</th>
+                        <th class="center aligned">Latitud</th>
+                        <th class="center aligned">Longitud</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bankDetail of bankDetails; let i = index;" (click)="addOrEditBankDetail(bankDetail)">
+                        <td class="center aligned">{{ i + 1 }}</td>
+                        <td>{{ bankDetail.address }}</td>
+                        <td>{{ bankDetail.detail }}</td>
+                        <td>{{ bankDetail.lat }}</td>
+                        <td>{{ bankDetail.lng }}</td>
+                        <td class="center aligned">
+                            <button class="negative circular ui icon button" (click)="deleteBankDetail($event, bankDetail)">
+                                <i class="icon trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer-table">
+            <div class="ui right floated small primary labeled icon button" (click)="addOrEditBankDetail()">
+                <i class="building outline icon"></i> Agregar Agencia
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="bank-detail-modal" class="ui modal">
+    <div class="header">{{ modalTitle }} Agencia</div>
+    <div class="content">
+        <form class="ui form" *ngIf='!!bankDetail'>
+            <div class="field">
+                <label>Dirección</label>
+                <input type="text" name="name" placeholder="Dirección de la agencia" [(ngModel)]="bankDetail.address">
+            </div>
+            <div class="field">
+                <label>Detalle</label>
+                <input type="text" name="short_name" placeholder="Ex. Centro comercial, Referencia, etc" [(ngModel)]="bankDetail.detail">
+            </div>
+            <div class="field">
+                <label>Latitud</label>
+                <input type="number" name="code" placeholder="-00.000000" [(ngModel)]="bankDetail.lat">
+            </div>
+            <div class="field">
+                <label>Longitud</label>
+                <input type="number" name="code" placeholder="-00.000000" [(ngModel)]="bankDetail.lng">
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">Cancelar</div>
+        <div class="ui positive right labeled icon button" [class.loading]="btnLoading">Guardar<i class="save outline icon"></i></div>
+    </div>
+</div>
+
+<div id="bank-detail-confirmation-modal" class="ui mini modal">
+    <div class="header">Eliminar Agencia</div>
+    <div class="content">
+        <p class="text">¿Desea eliminar éste registro ?</p>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">No</div>
+        <div class="ui positive right labeled icon button" [class.loading]="btnLoading">Si<i class="checkmark icon"></i></div>
+    </div>
+</div>
