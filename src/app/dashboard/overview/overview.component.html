@@ -22,17 +22,17 @@
             <table class="ui green stackable table">
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>Creado</th>
-                        <th>Usuario</th>
-                        <th>Nombre del Banco</th>
-                        <th>Sucursal</th>
-                        <th>Ubicacion</th>
+                        <th class="center aligned">N°</th>
+                        <th class="center aligned">Creado</th>
+                        <th class="center aligned">Usuario</th>
+                        <th class="center aligned">Nombre del Banco</th>
+                        <th class="center aligned">Sucursal</th>
+                        <th class="center aligned">Ubicacion</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let log of logs; let i = index;">
-                        <td>{{ log.id }}</td>
+                        <td>{{ i + 1 }}</td>
                         <td>{{ log.created | date:'short' }}</td>
                         <td>{{ log.user_email }}</td>
                         <td>{{ log.bank_name }}</td>
