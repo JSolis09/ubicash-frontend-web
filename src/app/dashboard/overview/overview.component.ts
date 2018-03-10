@@ -10,14 +10,28 @@ import { Log } from './overview.model';
 })
 export class OverviewComponent implements OnInit {
     public logs: Log[];
+    public query: string;
+    public loading: boolean;
     constructor(private overviewService: OverviewService) { }
 
     ngOnInit() {
+        this.getLogs();
+    }
+
+    private getLogs(query?: string): void {
+        this.loading = true;
         this.overviewService
-            .getLogs()
+            .getLogs(query)
             .subscribe((response) => {
                 this.logs = response.splice(0);
+                this.loading = false;
+            }, () => {
+                this.loading = false;
             });
+    }
+
+    public search(): void {
+        this.getLogs(this.query);
     }
 
 }

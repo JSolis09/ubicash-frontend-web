@@ -1,7 +1,25 @@
-<div class="ui grid">
+<div class="ui stackable grid">
     <div class="row">
+        <div class="ui header title-page">Dashboard</div>
+    </div>
+    <div class="row">
+        <div class="eight wide column">
+            <div class="filter">
+                <form class="ui form">
+                    <div class="field">
+                        <input name="query" type="text" placeholder="Palabra de búsqueda" [(ngModel)]="query">
+                    </div>
+                    <button class="ui primary button" type="button" (click)="search()">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div *ngIf="loading" class="ui active inverted dimmer">
+            <div class="ui text loader"></div>
+        </div>
         <div class="section-logs">
-            <table class="ui stackable table">
+            <table class="ui green stackable table">
                 <thead>
                     <tr>
                         <th>id</th>
@@ -15,7 +33,7 @@
                 <tbody>
                     <tr *ngFor="let log of logs; let i = index;">
                         <td>{{ log.id }}</td>
-                        <td>{{ log.created }}</td>
+                        <td>{{ log.created | date:'short' }}</td>
                         <td>{{ log.user_email }}</td>
                         <td>{{ log.bank_name }}</td>
                         <td>{{ log.branch }}</td>

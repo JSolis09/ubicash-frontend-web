@@ -15,4 +15,14 @@ body {
             }
         }
     }
+    .ui {
+        &.header {
+            &.title-page {
+                @media only screen and (max-width: 768px) {
+                    display: block;
+                    margin: .5em auto;
+                }
+            }
+        }
+    }
 }

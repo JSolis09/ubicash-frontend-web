@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Ng2Webstorage } from 'ngx-webstorage';
 
@@ -25,7 +25,9 @@ import * as $ from 'jquery';
         }),
         RouterModule.forRoot([])
     ],
-    providers: [],
+    providers: [
+        { provide: LOCALE_ID, useValue: 'es-ES' }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
