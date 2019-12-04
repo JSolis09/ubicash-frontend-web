@@ -18,12 +18,12 @@ export class BankDetailService {
                     or: [
                         {
                             address: {
-                                like: `%${query}%`
+                                ilike: `%${query}%`
                             }
                         },
                         {
                             detail: {
-                                like: `%${query}%`
+                                ilike: `%${query}%`
                             }
                         }
                     ]

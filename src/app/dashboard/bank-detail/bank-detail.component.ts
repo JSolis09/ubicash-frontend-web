@@ -55,7 +55,7 @@ export class BankDetailComponent implements OnInit, OnDestroy {
         this.bankSubscription = this.bankDetailService
             .getBankDetails(bankId, query)
             .subscribe((response) => {
-                this.bankDetails = response.splice(0);
+                this.bankDetails = [...response];
                 this.loading = false;
             }, () => {
                 this.loading = false;

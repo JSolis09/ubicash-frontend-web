@@ -12,18 +12,22 @@ export class OverviewService {
 
     public getLogs(query: string): Observable<Log[]> {
         const options: RequestOptions = new RequestOptions();
+        let filter: any = {
+            order: 'created DESC',
+        };
         if (!!query) {
-            const filter: any = {
+            filter = {
+                ...filter,
                 where: {
                     or: [
                         {
                             bank_name: {
-                                like: `%${query}%`
+                                ilike: `%${query}%`
                             }
                         },
                         {
                             location: {
-                                like: `%${query}%`
+                                ilike: `%${query}%`
                             }
                         },
                         {
@@ -33,15 +37,15 @@ export class OverviewService {
                         },
                         {
                             branch: {
-                                like: `%${query}%`
+                                ilike: `%${query}%`
                             }
                         }
                     ]
                 }
             };
-            options.params = new URLSearchParams();
-            options.params.set('filter', JSON.stringify(filter));
         }
+        options.params = new URLSearchParams();
+        options.params.set('filter', JSON.stringify(filter));
         return this.http.get('Logs', options);
     }
 
